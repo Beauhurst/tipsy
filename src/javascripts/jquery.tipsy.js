@@ -33,14 +33,16 @@
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
                 
-                var pos = $.extend({}, this.$element.offset(), {
-                    width: this.$element[0].offsetWidth,
-                    height: this.$element[0].offsetHeight
+                var $positioningTarget = this.options.positioningSurrogate == null ? this.$element : this.options.positioningSurrogate;
+                
+                var pos = $.extend({}, $positioningTarget.offset(), {
+                    width: $positioningTarget[0].offsetWidth,
+                    height: $positioningTarget[0].offsetHeight
                 });
                 
                 var actualWidth = $tip[0].offsetWidth,
                     actualHeight = $tip[0].offsetHeight,
-                    gravity = maybeCall(this.options.gravity, this.$element[0]);
+                    gravity = maybeCall(this.options.gravity, $positioningTarget[0]);
                 
                 var tp;
                 switch (gravity.charAt(0)) {
@@ -195,6 +197,7 @@
         live: false,
         offset: 0,
         opacity: 0.8,
+        positioningSurrogate: null,
         title: 'title',
         trigger: 'hover'
     };
