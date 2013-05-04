@@ -62,9 +62,9 @@
                 
                 if (gravity.length == 2) {
                     if (gravity.charAt(1) == 'w') {
-                        tp.left = pos.left + pos.width / 2 - 15;
+                        tp.left = pos.left + pos.width / 2 - parseInt ( $tip.css('padding-left') );
                     } else {
-                        tp.left = pos.left + pos.width / 2 - actualWidth + 15;
+                        tp.left = pos.left + pos.width / 2 - actualWidth + parseInt ( $tip.css('padding-right') );
                     }
                 }
                 
