@@ -39,6 +39,14 @@
                     width: $positioningTarget[0].offsetWidth,
                     height: $positioningTarget[0].offsetHeight
                 });
+
+                if (typeof $positioningTarget[0].nearestViewportElement == 'object') {
+                    // this is SVG - calculate differently
+                    var rect = $positioningTarget[0].getBoundingClientRect ();
+                    pos.width = rect.width;
+                    pos.height = rect.height;
+                }
+
                 
                 var actualWidth = $tip[0].offsetWidth,
                     actualHeight = $tip[0].offsetHeight,
