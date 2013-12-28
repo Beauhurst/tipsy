@@ -27,6 +27,9 @@
         show: function() {
             var title = this.getTitle();
             if (title && this.enabled) {
+                // emit a useful event
+                this.$element.trigger ( 'tipsyPreShow' );
+
                 var $tip = this.tip();
                 
                 $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
