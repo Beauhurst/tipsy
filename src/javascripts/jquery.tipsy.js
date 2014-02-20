@@ -26,7 +26,8 @@
     Tipsy.prototype = {
         show: function() {
             var title = this.getTitle();
-            if (title && this.enabled) {
+            if ( title && this.enabled && $.contains ( document , this.$element[0] ) ) {
+                // ^ also ensuring this.$element is still in the DOM. If not, we're not wanted.
                 // emit a useful event
                 this.$element.trigger ( 'tipsyPreShow' );
 
